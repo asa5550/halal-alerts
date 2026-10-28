@@ -146,12 +146,14 @@ def portfolio_alerts(book: Book, masked: bool) -> list[dict]:
 
 
 def plan_text(book: Book, masked: bool) -> str:
+    """Plan amounts are just your budget split, so they're always shown. Only the
+    'adding to holding' tag (which reveals what you own) is hidden when masked."""
     labels = book.cfg["labels"]
     parts = []
     for l in book.plan["lines"]:
         inst = book.sig.get(l["symbol"].upper(), {"symbol": l["symbol"], "domain": l["domain"]})
         pxo = book.px_omr(l["symbol"]) if l["symbol"] != "—" else None
-        est = f" ≈ {units(round_units(l['omr'] / pxo, inst), inst, masked)}" if pxo else ""
-        held = " (adding to holding)" if l["symbol"].upper() in book.pos else (" (new)" if l["symbol"] != "—" else "")
-        parts.append(f"{labels.get(l['domain'], l['domain'])}: {l['symbol']} {money(l['omr'], masked)}{est}{held}, {l['note']}")
+        est = f" ≈ {units(round_units(l['omr'] / pxo, inst), inst, False)}" if pxo else ""
+        held = "" if masked or l["symbol"] == "—" else (" (adding to holding)" if l["symbol"].upper() in book.pos else " (new)")
+        parts.append(f"{labels.get(l['domain'], l['domain'])}: {l['symbol']} {money(l['omr'], False)}{est}{held}, {l['note']}")
     return " | ".join(parts)
