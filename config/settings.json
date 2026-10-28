@@ -1,0 +1,30 @@
+{
+  "feed_title": "Halal Portfolio Alerts",
+  "site_url": "https://YOUR-GITHUB-USERNAME.github.io/halal-alerts/",
+  "monthly_budget_omr": 100,
+  "plan_day": 1,
+  "targets_pct": {
+    "us_halal": 50,
+    "crypto_spot": 15,
+    "commodities": 15,
+    "msx": 20
+  },
+  "labels": {
+    "us_halal": "US Halal",
+    "crypto_spot": "Crypto (spot)",
+    "commodities": "Commodities",
+    "msx": "MSX"
+  },
+  "drift_alert_pp": 10,
+  "max_position_pct": 35,
+  "loss_alert_pct": -15,
+  "privacy_mode": true,
+  "min_ticket_omr": 5,
+  "crypto_alerts": {
+    "move_1h_pct": 4,
+    "move_24h_pct": 8,
+    "dip_from_30d_high_pct": 15,
+    "cooldown_hours": 6
+  },
+  "take_profit_pct": 30
+}

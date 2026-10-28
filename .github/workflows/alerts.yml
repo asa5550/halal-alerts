@@ -1,0 +1,43 @@
+name: daily-alerts
+
+on:
+  schedule:
+    - cron: "17 5 * * *"   # daily 09:17 Muscat: US closes, MSX previous close, crypto, portfolio
+  workflow_dispatch: {}      # "Run workflow" button for a manual refresh
+
+permissions:
+  contents: write
+
+concurrency: { group: alerts, cancel-in-progress: false }
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load your private portfolio repo (trades + manual prices)
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: ${{ github.repository_owner }}/halal-portfolio
+          token: ${{ secrets.PORTFOLIO_TOKEN }}
+          path: private
+      - run: |
+          [ -f private/transactions.csv ] && cp private/transactions.csv portfolio/transactions.csv || true
+          [ -f private/manual_prices.csv ] && cp private/manual_prices.csv config/manual_prices.csv || true
+          rm -rf private
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - run: python src/run.py
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Commit feed and state (never your trades)
+        run: |
+          git checkout -- portfolio config/manual_prices.csv
+          git config user.name "halal-alerts-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs state
+          git diff --cached --quiet || git commit -m "daily alerts $(date -u +%F)"
+          git pull --rebase && git push
