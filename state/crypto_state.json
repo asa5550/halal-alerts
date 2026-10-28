@@ -1,0 +1,11 @@
+{
+ "cooldown": {},
+ "above200": {
+  "BTC": true,
+  "ETH": true,
+  "SOL": true,
+  "XRP": true,
+  "XLM": false,
+  "ADA": false
+ }
+}
