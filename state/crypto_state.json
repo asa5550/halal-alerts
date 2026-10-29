@@ -1,12 +1,12 @@
 {
  "cooldown": {
-  "dip:ETH": "2026-10-29T14:41:06.179411+00:00"
+  "dip:ETH": "2026-10-29T23:51:43.586134+00:00"
  },
  "above200": {
   "BTC": true,
   "ETH": true,
   "SOL": true,
-  "XRP": true,
+  "XRP": false,
   "XLM": false,
   "ADA": false
  }
