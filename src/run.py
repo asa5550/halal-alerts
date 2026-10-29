@@ -127,9 +127,6 @@ def main():
     STATE.parent.mkdir(exist_ok=True)
     STATE.write_text(json.dumps(state, indent=1))
     feed.write_rss(state["items"], cfg)
-    feed.write_dashboard(signals, snap, plan, cfg, state["items"])
-    (ROOT / "docs" / "signals.json").write_text(json.dumps(
-        [{k: v for k, v in s.items() if k != "sources"} for s in signals], indent=1, default=str))
     print(f"{len(signals)} instruments, {len(new_items)} new feed items, portfolio {snap['total_omr']:.2f} OMR")
 
 
