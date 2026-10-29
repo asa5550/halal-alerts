@@ -100,7 +100,23 @@ ul{{padding-left:18px}} small{{color:#667}}
 <div class="card" style="margin-top:12px"><table><tr><th>Symbol</th><th>Domain</th><th>Qty</th><th>Cost</th><th>Value</th><th>P&amp;L</th><th>Wt</th></tr>{pf_rows}</table><small>* no live price, shown at cost</small></div>
 <h2>This month's {fmt(plan['budget'],0)} OMR plan</h2><div class="card"><table><tr><th>Domain</th><th>Buy</th><th>OMR</th><th>Why</th></tr>{plan_rows}</table></div>
 <h2>Signals</h2><div class="card"><table><tr><th>Domain</th><th>Instrument</th><th>Signal</th><th>Tech / Research</th><th>Last</th><th>RSI</th><th>Reasons</th></tr>{sig_rows}</table></div>
-<h2>Recent alerts</h2><div class="card"><ul>{feed_rows}</ul></div>
+<h2>Recent alerts</h2><div class="card"><ul id="alerts">{feed_rows}</ul></div>
+<script>
+// Crypto alerts arrive every 15 min in feed.xml; load them live so this list is always current.
+fetch("feed.xml?" + Date.now()).then(r => r.text()).then(t => {{
+  const x = new DOMParser().parseFromString(t, "application/xml");
+  const items = [...x.querySelectorAll("item")].slice(0, 25);
+  if (!items.length) return;
+  const ul = document.getElementById("alerts"); ul.innerHTML = "";
+  for (const it of items) {{
+    const li = document.createElement("li"), b = document.createElement("b"), sm = document.createElement("small"), pp = document.createElement("p");
+    b.textContent = it.querySelector("title").textContent;
+    sm.textContent = new Date(it.querySelector("pubDate").textContent).toLocaleString();
+    pp.textContent = it.querySelector("description").textContent;
+    li.append(b, document.createElement("br"), sm, pp); ul.append(li);
+  }}
+}}).catch(() => {{}});
+</script>
 </body></html>"""
     out = DOCS / "index.html"
     out.write_text(page, encoding="utf-8")
