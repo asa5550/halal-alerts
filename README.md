@@ -51,6 +51,18 @@ There is no SHORT signal: shorting and leverage aren't Sharia-compliant.
    - a holding is down 15% or more from what you paid.
 5. **The monthly plan** on the 1st sends more of the 100 OMR to underweight domains, so the portfolio rebalances without selling.
 
+## Log trades through Telegram
+Message your bot. It's processed within about 15 minutes and the bot replies to confirm:
+```
+bought 100 OQGN at 0.217 fee 0.4
+sold 0.0005 BTC at 81200 fee 0.04
+buy 1.5 SPUS @ 59.9 fee 1 on 2026-11-02
+```
+Price and fee are in the instrument's currency: MSX = OMR, crypto = USDT, US and gold = USD, 9405 = SAR. Fee and date are optional.
+Commands: `/last` (last 5 trades), `/undo` (remove the last Telegram-logged trade), `/pos` (positions), `/help`.
+Only messages from your own chat are accepted. Sells larger than your position are rejected (no short selling).
+This needs `PORTFOLIO_TOKEN` to have **Contents: Read and write** on `halal-portfolio`.
+
 ## MSX prices
 Each morning the job reads each MSX stock's price from its Mubasher page (`english.mubasher.info/markets/MSM/stocks/<TICKER>`, 15 minutes delayed). It saves the prices to `state/price_history.csv`, building its own history because no free MSX history source exists.
 
