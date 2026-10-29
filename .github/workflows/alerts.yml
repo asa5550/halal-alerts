@@ -41,11 +41,23 @@ jobs:
       - run: |
           [ -f private/transactions.csv ] && cp private/transactions.csv portfolio/transactions.csv || true
           [ -f private/manual_prices.csv ] && cp private/manual_prices.csv config/manual_prices.csv || true
-          rm -rf private
       - run: python src/run.py
         env:
+          WIDGET_OUT: private/widget.json
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Save widget data to your private repo
+        if: always()
+        continue-on-error: true
+        run: |
+          [ -f private/widget.json ] || exit 0
+          cd private
+          git config user.name "halal-alerts-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add widget.json
+          git diff --cached --quiet || (git commit -m "widget data" && git pull --rebase && git push)
+      - run: rm -rf private
+        if: always()
       - name: Commit feed and state (never your trades)
         run: |
           git checkout -- portfolio config/manual_prices.csv

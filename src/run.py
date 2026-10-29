@@ -14,6 +14,7 @@ import advice  # noqa: E402
 import notify  # noqa: E402
 import prices  # noqa: E402
 import portfolio  # noqa: E402
+import widget  # noqa: E402
 from prices import get_closes  # noqa: E402
 from signals import evaluate  # noqa: E402
 
@@ -42,9 +43,10 @@ def main():
     new_items = []
 
     # 1) evaluate everything first: actions depend on holdings, holdings depend on prices
-    signals, last_prices = [], {}
+    signals, last_prices, closes = [], {}, {}
     for inst in watch["instruments"]:
-        res = evaluate(inst, get_closes(inst))
+        closes[inst["symbol"].upper()] = c = get_closes(inst)
+        res = evaluate(inst, c)
         signals.append(res)
         if res.get("ind"):
             ccy = inst.get("currency") or ("USDT" if inst.get("binance") else "USD")
@@ -127,6 +129,7 @@ def main():
     STATE.parent.mkdir(exist_ok=True)
     STATE.write_text(json.dumps(state, indent=1))
     feed.write_rss(state["items"], cfg)
+    widget.build(snap, signals, closes, cfg, plan)  # private repo only (WIDGET_OUT)
     print(f"{len(signals)} instruments, {len(new_items)} new feed items, portfolio {snap['total_omr']:.2f} OMR")
 
 

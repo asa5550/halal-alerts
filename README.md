@@ -88,6 +88,16 @@ Each morning the job reads each MSX stock's price from its Mubasher page (`engli
 8. **iPhone:**
    - Telegram notifications are on by default.
 
+## iPhone home-screen widget (private)
+Charts on your home screen, with full OMR amounts, read from your **private** `halal-portfolio` repo. The daily job writes `widget.json` there and the crypto job refreshes crypto prices every ~15 min. It never goes to this public repo.
+
+1. Install **Scriptable** (free) from the App Store.
+2. Create a GitHub token: github.com → Settings → Developer settings → Fine-grained tokens → *Generate new token*. Repository access: **Only select repositories → halal-portfolio**. Permissions: **Contents: Read-only**. Copy it.
+3. In Scriptable tap **+**, paste [`widget/HalalPortfolio.js`](widget/HalalPortfolio.js), name it *Halal Portfolio*, and run it once. Paste the token when asked (kept in the iPhone Keychain).
+4. Long-press the home screen → **+** → Scriptable → pick a size → *Edit Widget* → Script: **Halal Portfolio**.
+
+Small: value + chart. Medium: adds allocation vs target. Large: adds holdings with 30-day sparklines.
+
 ## Tuning (`config/settings.json`)
 - Budget and targets: `monthly_budget_omr`, `targets_pct`
 - Portfolio alerts: `drift_alert_pp`, `max_position_pct`, `loss_alert_pct`, `take_profit_pct`
