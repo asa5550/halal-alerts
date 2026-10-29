@@ -8,7 +8,7 @@ Long-only, Sharia-screened alerts for halal US equities/ETFs, spot crypto, Shari
 | **Daily alerts** | 09:17 Muscat, every day | BUY/ACCUMULATE/HOLD/REDUCE/SELL/AVOID changes, MSX prices, portfolio checks, the monthly 100 OMR plan on the 1st, a weekly digest on Sunday |
 | **Crypto watch** | Every 15 min, 24/7 | Sharp moves in coins you hold (±4% in 1h, ±8% in 24h), dip-zone buys with an OMR amount (≥15% under the 30-day high), and 200-day trend breaks |
 
-Every alert goes to **Telegram**, which pushes to your phone instantly, and to the **RSS feed** at `…/feed.xml`. The **dashboard** at `…/index.html` shows everything on one page.
+Every alert goes to **Telegram**, which pushes to your phone instantly. There is no public dashboard: the website is turned off so your portfolio is only visible to you in Telegram. (An RSS file, `docs/feed.xml`, is still written with amounts masked; it's only reachable as a feed if GitHub Pages is switched back on.)
 
 ## Every alert tells you what to do with what *you* hold
 Alerts are based on your trade log, so each one ends with an **ACTION**:
@@ -83,18 +83,16 @@ Each morning the job reads each MSX stock's price from its Mubasher page (`engli
    - `PORTFOLIO_TOKEN`: the token from step 3
    - `TELEGRAM_BOT_TOKEN`: the bot token from step 4
    - `TELEGRAM_CHAT_ID`: the chat ID from step 4
-6. **Pages:** Settings → Pages → Deploy from branch → `main` → `/docs`. Put the URL into `site_url` in `config/settings.json`.
+6. **Pages (off):** leave GitHub Pages unpublished; the site would be public on a free plan.
 7. **First run:** Actions → *daily-alerts* → **Run workflow**. Also run *crypto-watch* once. Your first Telegram alerts should arrive within a minute.
 8. **iPhone:**
    - Telegram notifications are on by default.
-   - Optionally add `…/feed.xml` to NetNewsWire or Reeder.
-   - Open `…/index.html` in Safari → Share → *Add to Home Screen*.
 
 ## Tuning (`config/settings.json`)
 - Budget and targets: `monthly_budget_omr`, `targets_pct`
 - Portfolio alerts: `drift_alert_pp`, `max_position_pct`, `loss_alert_pct`, `take_profit_pct`
 - Crypto alerts: `crypto_alerts` → `move_1h_pct`, `move_24h_pct`, `dip_from_30d_high_pct`, `cooldown_hours`
-- Privacy: `privacy_mode: true` hides OMR amounts on the public dashboard and feed. Telegram messages are private, but amounts are hidden there too.
+- Privacy: `privacy_mode: true` hides OMR amounts in the public repo's feed file. Telegram messages are private, but amounts are hidden there too.
 
 ## Files
 - `config/watchlist.json`: instruments, research views and compliance notes (refresh monthly)
