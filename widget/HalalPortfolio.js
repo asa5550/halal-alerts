@@ -62,7 +62,11 @@ const omr = (v, big) => {
   const a = Math.abs(v), dp = big ? (a >= 1000 ? 0 : 2) : (a >= 100 ? 0 : a >= 10 ? 1 : 2);
   return v.toLocaleString("en-US", { minimumFractionDigits: dp, maximumFractionDigits: dp });
 };
-const pct = (p, dp = 1) => p == null ? "—" : (p >= 0 ? "+" : "") + (p * 100).toFixed(dp) + "%";
+const pct = (p, dp = 1) => {
+  if (p == null) return "—";
+  const s = (p * 100).toFixed(dp);
+  return Number(s) === 0 ? (0).toFixed(dp) + "%" : (p > 0 ? "+" : "") + s + "%";
+};
 const col = (h, a = 1) => new Color(h, a);
 const ago = iso => {
   const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
@@ -162,7 +166,7 @@ function rows(ctx, d, x, y, w, n) {
     const yy = y + 20 + i * 26;
     text(ctx, r.symbol, x, yy + 2, 60, 16, 13, C.text, { bold: true });
     text(ctx, r.signal || "", x + 58, yy + 4, 80, 14, 9, C.dim);
-    const ch = hold.length ? r.pnl_pct : r.chg, up = (ch ?? 0) >= 0;
+    const ch = hold.length ? r.pnl_pct : r.chg, up = (ch ?? 0) >= -0.0005;
     line(ctx, r.spark || [], x + w * 0.42, yy + 2, w * 0.22, 16, up ? C.up : C.down, { width: 1.5 });
     text(ctx, hold.length ? omr(r.value) : (r.last != null ? omr(r.last) : "—"), x + w * 0.66, yy + 2, w * 0.18, 16, 12, C.text,
          { align: "right" });
