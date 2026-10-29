@@ -18,6 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import feed  # noqa: E402
 import notify  # noqa: E402
+import widget  # noqa: E402
 import portfolio  # noqa: E402
 from advice import money, units  # noqa: E402
 from prices import binance_klines  # noqa: E402
@@ -36,6 +37,7 @@ def main():
     now = datetime.now(timezone.utc)
     cool = timedelta(hours=rules.get("cooldown_hours", 6))
     new = []
+    latest = {}
     masked_default = bool(cfg.get("privacy_mode"))
     positions = portfolio.load_positions()
     state0 = load_json(STATE, {})
@@ -74,6 +76,7 @@ def main():
         if not hourly or not daily:
             continue
         last = float(hourly[-1][4])
+        latest[sym.upper()] = last
         c1h = last / float(hourly[-2][4]) - 1
         c24 = last / float(hourly[0][4]) - 1
         closes = [float(k[4]) for k in daily]
@@ -118,6 +121,7 @@ def main():
                     "ACTION: the long-term trend is weakening. If tomorrow's signal turns REDUCE, you'll get exact sell amounts."))
         cstate["above200"][sym] = above
 
+    widget.refresh_crypto(latest)  # private repo only (WIDGET_OUT)
     CSTATE.parent.mkdir(exist_ok=True)
     CSTATE.write_text(json.dumps(cstate, indent=1))
     if new:
