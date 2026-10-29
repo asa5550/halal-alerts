@@ -60,6 +60,8 @@ buy 1.5 SPUS @ 59.9 fee 1 on 2026-11-02
 ```
 Price and fee are in the instrument's currency: MSX = OMR, crypto = USDT, US and gold = USD, 9405 = SAR. Fee and date are optional.
 Commands: `/last` (last 5 trades), `/undo` (remove the last Telegram-logged trade), `/pos` (positions), `/help`.
+
+The dashboard's **Telegram** card shows the latest 20 messages between you and the bot (alerts, your messages, the bot's replies), refreshed every ~15 min from `docs/telegram.json`. With `privacy_mode` on, quantities, prices and amounts are shown as •••.
 Only messages from your own chat are accepted. Sells larger than your position are rejected (no short selling).
 This needs `PORTFOLIO_TOKEN` to have **Contents: Read and write** on `halal-portfolio`.
 

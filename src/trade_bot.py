@@ -28,6 +28,7 @@ from pathlib import Path
 import requests
 
 sys.path.insert(0, str(Path(__file__).parent))
+import tg_log  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 OFFSET = ROOT / "state" / "telegram_offset.json"
 FIELDS = ["date", "domain", "symbol", "qty", "price", "currency", "fees", "note"]
@@ -58,6 +59,7 @@ def api(method: str, **params):
 def reply(text: str):
     try:
         api("sendMessage", chat_id=os.environ["TELEGRAM_CHAT_ID"], text=text)
+        tg_log.record("out", text)
     except Exception as e:  # noqa: BLE001
         print(f"[telegram reply] {e}")
 
@@ -128,6 +130,8 @@ def main(tx_path: str):
         if str(msg.get("chat", {}).get("id")) != chat:  # ignore anyone else who finds your bot
             continue
         text = (msg.get("text") or "").strip()
+        if text:
+            tg_log.record("in", text, when=datetime.fromtimestamp(msg.get("date", 0) or datetime.now().timestamp(), timezone.utc))
         low = text.lower()
         if low in ("/start", "/help", "help"):
             reply(HELP)

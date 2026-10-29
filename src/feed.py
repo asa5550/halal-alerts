@@ -92,6 +92,8 @@ table{{border-collapse:collapse;width:100%}} td,th{{padding:6px 8px;border-botto
 .sig{{font-weight:600;white-space:nowrap}} .BUY,.pos{{color:#137333}} .ACCUMULATE{{color:#2e7d32}} .REDUCE{{color:#c25e00}} .SELL,.neg{{color:#c5221f}} .AVOID{{color:#555}}
 .kpi{{display:flex;gap:12px;flex-wrap:wrap}} .kpi div{{background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 1px 2px #0001}} .kpi b{{display:block;font-size:20px}}
 ul{{padding-left:18px}} small{{color:#667}}
+.tg{{max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}} .msg{{max-width:85%;padding:8px 11px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word;line-height:1.35}}
+.msg.out{{background:#eef1f5;align-self:flex-start;border-bottom-left-radius:4px}} .msg.in{{background:#d9f2e3;align-self:flex-end;border-bottom-right-radius:4px}} .msg small{{display:block;margin-top:3px;font-size:11px}}
 </style></head><body>
 <h1>{e(cfg['feed_title'])}</h1><small>Updated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC · <a href="feed.xml">RSS feed</a> · Long-only, Sharia-screened. Not financial advice.</small>
 <h2>Portfolio</h2><div class="kpi"><div>Value<b>{money(tot)} OMR</b></div><div>Invested<b>{money(snap['cost_omr'])} OMR</b></div>
@@ -100,6 +102,7 @@ ul{{padding-left:18px}} small{{color:#667}}
 <div class="card" style="margin-top:12px"><table><tr><th>Symbol</th><th>Domain</th><th>Qty</th><th>Cost</th><th>Value</th><th>P&amp;L</th><th>Wt</th></tr>{pf_rows}</table><small>* no live price, shown at cost</small></div>
 <h2>This month's {fmt(plan['budget'],0)} OMR plan</h2><div class="card"><table><tr><th>Domain</th><th>Buy</th><th>OMR</th><th>Why</th></tr>{plan_rows}</table></div>
 <h2>Signals</h2><div class="card"><table><tr><th>Domain</th><th>Instrument</th><th>Signal</th><th>Tech / Research</th><th>Last</th><th>RSI</th><th>Reasons</th></tr>{sig_rows}</table></div>
+<h2>Telegram</h2><div class="card"><div class="tg" id="tg"><small>No messages yet. New alerts and messages with your bot will appear here.</small></div><small>Latest messages with your alerts bot · amounts hidden</small></div>
 <h2>Recent alerts</h2><div class="card"><ul id="alerts">{feed_rows}</ul></div>
 <script>
 // Crypto alerts arrive every 15 min in feed.xml; load them live so this list is always current.
@@ -115,6 +118,21 @@ fetch("feed.xml?" + Date.now()).then(r => r.text()).then(t => {{
     pp.textContent = it.querySelector("description").textContent;
     li.append(b, document.createElement("br"), sm, pp); ul.append(li);
   }}
+}}).catch(() => {{}});
+</script>
+<script>
+// Latest Telegram messages, written by the 15-min job to telegram.json.
+fetch("telegram.json?" + Date.now()).then(r => r.json()).then(msgs => {{
+  if (!msgs.length) return;
+  const box = document.getElementById("tg"); box.innerHTML = "";
+  for (const m of msgs.slice(-20)) {{
+    const d = document.createElement("div"), sm = document.createElement("small");
+    d.className = "msg " + (m.dir === "in" ? "in" : "out");
+    d.textContent = m.text;
+    sm.textContent = (m.dir === "in" ? "You · " : "Bot · ") + new Date(m.t).toLocaleString();
+    d.append(sm); box.append(d);
+  }}
+  box.scrollTop = box.scrollHeight;
 }}).catch(() => {{}});
 </script>
 </body></html>"""
