@@ -1,11 +1,11 @@
 """Log trades by messaging your Telegram bot.
 
-Runs inside the crypto-watch job (every ~15 min). Reads new messages from YOUR chat only,
+Runs inside the trade-log job (every ~15 min). Reads new messages from YOUR chat only,
 appends trades to the private repo's transactions.csv, and replies with a confirmation.
 
 Message formats (case-insensitive, fee optional, date optional - defaults to today):
   bought 100 OQGN at 0.217 fee 0.4
-  sold 0.0005 BTC at 81200 fee 0.04
+  sold 2 SPUS at 61.2 fee 1
   buy 1.5 SPUS @ 59.9 fee 1 on 2026-11-02
 Commands:
   /help   - formats
@@ -34,9 +34,9 @@ FIELDS = ["date", "domain", "symbol", "qty", "price", "currency", "fees", "note"
 
 HELP = ("Log a trade by sending, e.g.:\n"
         "• bought 100 OQGN at 0.217 fee 0.4\n"
-        "• sold 0.0005 BTC at 81200 fee 0.04\n"
+        "• sold 2 SPUS at 61.2 fee 1\n"
         "• buy 1.5 SPUS @ 59.9 fee 1 on 2026-11-02\n\n"
-        "Price and fee are per the instrument's currency (MSX = OMR, crypto = USDT, US/gold = USD, 9405 = SAR). "
+        "Price and fee are per the instrument's currency (MSX = OMR, US/gold = USD, 9405 = SAR). "
         "Fee is optional. Date defaults to today.\n\n"
         "Commands: /last  /undo  /pos  /help\n"
         "Trades are processed every ~15 min.")
@@ -80,12 +80,17 @@ def write_rows(path: Path, rows: list[dict]):
         w.writerows(rows)
 
 
-def parse_trade(text: str, watch: dict) -> tuple[dict | None, str]:
+def parse_trade(text: str, watch: dict, rows: list[dict] | None = None) -> tuple[dict | None, str]:
     m = TRADE_RE.match(text)
     if not m:
         return None, "I couldn't read that. Send /help for the format."
     sym = m["sym"].upper()
     inst = watch.get(sym)
+    sell_word = m["side"].lower() in ("sell", "sold")
+    if not inst and sell_word:  # selling an old holding that was removed from the watchlist
+        old = [r for r in rows or [] if r["symbol"].strip().upper() == sym]
+        if old:
+            inst = {"symbol": sym, "domain": old[-1]["domain"], "currency": old[-1]["currency"]}
     if not inst:
         return None, f"{sym} isn't in your watchlist. Known symbols: " + ", ".join(sorted(watch))
     qty, price = float(m["qty"]), float(m["price"])
@@ -150,7 +155,7 @@ def main(tx_path: str):
             held = [h for h in held if h[1] > 1e-12]
             reply("Positions:\n" + "\n".join(f"{s}: {q:g}" for s, q in held) if held else "No open positions.")
         else:
-            row, info = parse_trade(text, watch)
+            row, info = parse_trade(text, watch, rows)
             if not row:
                 reply(info)
                 continue

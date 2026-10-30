@@ -49,14 +49,14 @@ def main():
         res = evaluate(inst, c)
         signals.append(res)
         if res.get("ind"):
-            ccy = inst.get("currency") or ("USDT" if inst.get("binance") else "USD")
+            ccy = inst.get("currency") or "USD"
             last_prices[inst["symbol"].upper()] = (res["ind"]["last"], ccy)
 
     snap = portfolio.value(portfolio.load_positions(), last_prices)
     plan = portfolio.monthly_plan(snap, signals, cfg)
     book = advice.Book(snap, cfg, plan, signals, last_prices)
     masked = feed.PRIVATE
-    state["plan"] = {"month": now.strftime("%Y-%m"), "lines": plan["lines"]}  # used by the crypto watcher
+    state["plan"] = {"month": now.strftime("%Y-%m"), "lines": plan["lines"]}
 
     def add(title, pub, priv, category, key, anchor=""):
         it = make_item(title, pub, category, key, anchor)

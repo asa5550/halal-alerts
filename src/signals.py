@@ -2,7 +2,7 @@
 
 Signals are long-only by design: BUY, ACCUMULATE, HOLD, REDUCE, SELL, AVOID.
 There is no SHORT signal because short selling (selling what you don't own) and
-leveraged/derivative exposure are not Sharia-compliant, and Binance spot can't short.
+leveraged/derivative exposure are not Sharia-compliant.
 """
 from __future__ import annotations
 

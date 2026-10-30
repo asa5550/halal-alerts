@@ -2,7 +2,7 @@ name: daily-alerts
 
 on:
   schedule:
-    - cron: "17 5 * * *"   # daily 09:17 Muscat: US closes, MSX previous close, crypto, portfolio
+    - cron: "17 5 * * *"   # daily 09:17 Muscat: US closes, MSX previous close, portfolio
   workflow_dispatch: {}      # "Run workflow" button for a manual refresh
 
 permissions:

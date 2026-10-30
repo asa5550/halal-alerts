@@ -5,7 +5,6 @@ PRIVATE halal-portfolio repo (the workflows pass WIDGET_OUT=private/widget.json)
 
 - build(): daily run, from all instruments' closes: totals, allocation vs target,
   holdings, 90-day portfolio value history, sparklines and this month's plan.
-- refresh_crypto(): every 15 min, re-prices crypto holdings and today's history point.
 """
 from __future__ import annotations
 
@@ -90,7 +89,7 @@ def build(snap: dict, signals: list[dict], closes: dict, cfg: dict, plan: dict) 
         now = datetime.now(timezone.utc)
         today = pd.Timestamp(now.date())
         sig = {s["symbol"].upper(): s for s in signals}
-        ccys = {s["symbol"].upper(): s.get("currency") or ("USDT" if s.get("binance") else "USD") for s in signals}
+        ccys = {s["symbol"].upper(): s.get("currency") or "USD" for s in signals}
         tot = snap["total_omr"]
         hist = _history(_rows(), closes, ccys, today)
         holdings = [{"symbol": r["symbol"], "domain": r["domain"], "qty": r["qty"], "value": round(r["value_omr"], 3),
@@ -100,7 +99,7 @@ def build(snap: dict, signals: list[dict], closes: dict, cfg: dict, plan: dict) 
                     for r in snap["rows"]]
         held = {h["symbol"] for h in holdings}
         planned = [l["symbol"] for l in plan["lines"] if l["symbol"] != "—"]
-        watch_syms = list(dict.fromkeys([*planned, "BTC", "ETH", "SPUS", "GOLD"]))
+        watch_syms = list(dict.fromkeys([*planned, "SPUS", "UMMA", "GOLD"]))
         watch = []
         for s in watch_syms:
             if s in held or s not in sig:
@@ -132,52 +131,3 @@ def build(snap: dict, signals: list[dict], closes: dict, cfg: dict, plan: dict) 
     except Exception as e:  # noqa: BLE001 - the widget must never break alerts
         print(f"[widget] {e}")
 
-
-def refresh_crypto(last: dict[str, float]) -> None:
-    """last: symbol -> latest USDT price. Re-values crypto holdings in widget.json."""
-    path = out_path()
-    if not path or not path.exists() or not last:
-        return
-    try:
-        d = json.loads(path.read_text())
-        changed = False
-        for h in d.get("holdings", []):
-            px = last.get(h["symbol"])
-            if px is None:
-                continue
-            h["last"] = px
-            h["value"] = round(portfolio.to_omr(h["qty"] * px, "USDT"), 3)
-            h["pnl_pct"] = round(h["value"] / h["cost"] - 1, 4) if h["cost"] else 0
-            if h.get("spark"):
-                h["spark"][-1] = px
-            changed = True
-        for w in d.get("watch", []):
-            if w["symbol"] in last:
-                w["last"] = last[w["symbol"]]
-                if w.get("spark"):
-                    w["spark"][-1] = w["last"]
-                    w["chg"] = _chg(w["spark"])
-                changed = True
-        if not changed:
-            return
-        tot = sum(h["value"] for h in d["holdings"])
-        d["total"], d["pnl"] = round(tot, 3), round(tot - d["cost"], 3)
-        d["pnl_pct"] = round(tot / d["cost"] - 1, 4) if d["cost"] else 0
-        for h in d["holdings"]:
-            h["weight"] = round(h["value"] / tot, 4) if tot else 0
-        for dom in d["domains"]:
-            dom["value"] = round(sum(h["value"] for h in d["holdings"] if h["domain"] == dom["key"]), 3)
-            dom["pct"] = round(dom["value"] / tot * 100, 1) if tot else 0
-        now = datetime.now(timezone.utc)
-        day = now.strftime("%Y-%m-%d")
-        if d.get("history") and tot:
-            if d["history"][-1]["d"] == day:
-                d["history"][-1]["v"] = round(tot, 3)
-            elif d["history"][-1]["d"] == (now - timedelta(days=1)).strftime("%Y-%m-%d"):
-                d["history"].append({"d": day, "v": round(tot, 3), "c": d["cost"]})
-                d["history"] = d["history"][-HISTORY_DAYS:]
-        d["updated"] = now.isoformat(timespec="seconds")
-        path.write_text(json.dumps(d, indent=1))
-        print(f"[widget] refreshed crypto in {path}")
-    except Exception as e:  # noqa: BLE001
-        print(f"[widget] {e}")

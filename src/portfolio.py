@@ -1,4 +1,4 @@
-"""Portfolio monitor across all four domains.
+"""Portfolio monitor across US halal, commodities and MSX.
 
 Reads portfolio/transactions.csv (one row per buy/sell), values everything in OMR,
 and raises alerts for drift, concentration and drawdown versus cost.

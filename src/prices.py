@@ -1,5 +1,5 @@
-"""Price fetching: Yahoo Finance (US, commodities, crypto fallback), Binance spot
-public klines (crypto), and a manual CSV override (MSX or anything without a feed).
+"""Price fetching: Yahoo Finance (US, commodities), Mubasher (MSX), and a manual CSV
+override (anything without a feed).
 
 Every fetcher returns a pandas Series of daily closes indexed by date, in the
 instrument's own currency. Failures return None so one bad symbol never kills a run.
@@ -15,32 +15,10 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 MANUAL_CSV = ROOT / "config" / "manual_prices.csv"
-# data-api.binance.vision is Binance's public market-data mirror. GitHub's runners are in the
-# US, where api.binance.com answers HTTP 451, so the mirror comes first.
-BINANCE_HOSTS = ["https://data-api.binance.vision", "https://api.binance.com"]
 HISTORY_CSV = ROOT / "state" / "price_history.csv"
 UA = {"User-Agent": "Mozilla/5.0 (halal-alerts personal price check)"}
 TIMEOUT = 20
 
-
-def binance_klines(pair: str, interval: str = "1d", limit: int = 400) -> list | None:
-    for host in BINANCE_HOSTS:
-        try:
-            r = requests.get(f"{host}/api/v3/klines", params={"symbol": pair, "interval": interval,
-                             "limit": min(limit, 1000)}, timeout=TIMEOUT)
-            r.raise_for_status()
-            return r.json()
-        except Exception as e:  # noqa: BLE001
-            print(f"[binance] {host} {pair}: {e}")
-    return None
-
-
-def binance_closes(pair: str, days: int = 400) -> pd.Series | None:
-    rows = binance_klines(pair, "1d", days)
-    if not rows:
-        return None
-    idx = pd.to_datetime([row[0] for row in rows], unit="ms").normalize()
-    return pd.Series([float(row[4]) for row in rows], index=idx, name=pair)
 
 
 # ---------- MSX via Mubasher (15-min delayed, public stock pages) ----------
@@ -148,11 +126,8 @@ def get_closes(inst: dict) -> pd.Series | None:
         else:
             FETCH_FAILURES.append(inst["symbol"])
         return stored_closes(inst["symbol"])
-    for source in ("binance", "yahoo"):
-        sym = inst.get(source)
-        if not sym:
-            continue
-        s = binance_closes(sym) if source == "binance" else yahoo_closes(sym)
+    if inst.get("yahoo"):
+        s = yahoo_closes(inst["yahoo"])
         if s is not None and len(s) > 0:
             return s
     return stored_closes(inst["symbol"])

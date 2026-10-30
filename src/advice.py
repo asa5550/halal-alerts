@@ -19,8 +19,6 @@ def units(q: float, inst: dict, masked: bool) -> str:
         return "•••"
     if inst.get("domain") == "msx":
         return f"{int(math.floor(q)):,} shares"
-    if inst.get("domain") == "crypto_spot":
-        return f"{q:.6g} {inst['symbol']}"
     return f"{q:.4g} units"
 
 

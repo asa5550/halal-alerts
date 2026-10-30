@@ -1,8 +1,8 @@
-name: crypto-watch
+name: trade-log
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 min, 24/7 (GitHub may delay a run by a few minutes at busy times)
+    - cron: "*/15 * * * *"   # every 15 min: picks up trades you message to the Telegram bot
   workflow_dispatch: {}
 
 permissions:
@@ -11,12 +11,12 @@ permissions:
 concurrency: { group: alerts, cancel-in-progress: false }
 
 jobs:
-  watch:
+  log:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Load your private portfolio repo (trades + manual prices)
+      - name: Load your private portfolio repo
         uses: actions/checkout@v4
         continue-on-error: true
         with:
@@ -25,7 +25,7 @@ jobs:
           path: private
       - uses: actions/setup-python@v5
         with: { python-version: "3.12", cache: pip }
-      - run: pip install pandas requests
+      - run: pip install requests
       - name: Log trades sent to the Telegram bot
         continue-on-error: true
         env:
@@ -39,30 +39,12 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add transactions.csv
           git diff --cached --quiet || (git commit -m "trade logged via Telegram" && git push)
-      - run: |
-          [ -f private/transactions.csv ] && cp private/transactions.csv portfolio/transactions.csv || true
-          [ -f private/manual_prices.csv ] && cp private/manual_prices.csv config/manual_prices.csv || true
-      - run: python src/crypto_watch.py
-        env:
-          WIDGET_OUT: private/widget.json
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      - name: Save widget data to your private repo
-        if: always()
-        continue-on-error: true
-        run: |
-          [ -f private/widget.json ] || exit 0
-          cd private
-          git config user.name "halal-alerts-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add widget.json
-          git diff --cached --quiet || (git commit -m "widget data" && git pull --rebase && git push)
       - run: rm -rf private
         if: always()
-      - run: |
-          git checkout -- portfolio
+      - name: Save the Telegram read position
+        run: |
           git config user.name "halal-alerts-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add state docs
-          git diff --cached --quiet || git commit -m "crypto watch $(date -u +%FT%H%M)"
+          git add state/telegram_offset.json
+          git diff --cached --quiet || git commit -m "telegram offset $(date -u +%FT%H%M)"
           git pull --rebase && git push

@@ -1,6 +1,6 @@
 // Halal Portfolio — iPhone home-screen widget for the Scriptable app.
 // Reads widget.json from your PRIVATE GitHub repo (asa5550/halal-portfolio), written by the
-// halal-alerts jobs (daily + crypto every 15 min). Works in small, medium and large sizes.
+// halal-alerts daily job. Works in small, medium and large sizes.
 //
 // Setup: paste this into a new Scriptable script, run it once in the app and paste your
 // GitHub token when asked (stored in the iPhone Keychain, never in this file).
@@ -13,7 +13,7 @@ const KEY = "halal_widget_token";
 const C = {
   bg: "#0f1724", card: "#182233", text: "#f1f4f9", dim: "#8b97ab", faint: "#2a364a",
   up: "#34c77b", down: "#ff6b5f", line: "#5aa9ff", cost: "#8b97ab",
-  dom: { us_halal: "#5aa9ff", crypto_spot: "#f5a524", commodities: "#e3c35a", msx: "#b48cff" },
+  dom: { us_halal: "#5aa9ff", commodities: "#e3c35a", msx: "#b48cff" },
 };
 
 // ---------- data ----------

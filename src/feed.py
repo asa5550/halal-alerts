@@ -20,7 +20,7 @@ def write_rss(items: list[dict], cfg: dict) -> Path:
         f"<title>{escape(cfg['feed_title'])}</title>",
         f"<link>{escape(cfg['site_url'])}</link>",
         f'<atom:link href="{escape(cfg["site_url"].rstrip("/"))}/feed.xml" rel="self" type="application/rss+xml"/>',
-        "<description>Halal investing alerts: US halal equities, spot crypto, Sharia commodities, MSX. "
+        "<description>Halal investing alerts: US halal equities, Sharia commodities, MSX. "
         "Long-only signals. Not financial advice.</description>",
         f"<lastBuildDate>{now}</lastBuildDate><ttl>60</ttl>",
     ]
