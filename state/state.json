@@ -6,8 +6,8 @@
   "SPTE": "HOLD",
   "NVDA": "ACCUMULATE",
   "AAPL": "ACCUMULATE",
-  "AVGO": "HOLD",
-  "LLY": "ACCUMULATE",
+  "AVGO": "REDUCE",
+  "LLY": "HOLD",
   "TSLA": "AVOID",
   "GOOGL": "AVOID",
   "MSFT": "AVOID",
@@ -18,8 +18,8 @@
   "SLV": "AVOID",
   "DBC": "AVOID",
   "USO": "AVOID",
-  "BKNZ": "ACCUMULATE",
-  "OQGN": "BUY",
+  "BKNZ": "HOLD",
+  "OQGN": "ACCUMULATE",
   "OQEP": "HOLD",
   "ABRJ": "HOLD",
   "OQBI": "HOLD",
@@ -31,64 +31,72 @@
  "alert_keys": {},
  "items": [
   {
-   "title": "🟩 ACCUMULATE SPUS",
-   "body": "US Halal · SP Funds S&P 500 Sharia ETF @ 59.89. You don't hold it. ACTION: buy ••• (≈•••) from this month's plan. Why: technical ACCUMULATE, research BUY; uptrend (price & 50d above 200d). Low-cost core halal large-cap; ~2% below 52w high. DCA monthly. Compliance: S&P 500 Shariah index; Shariah board; 0.45% ER",
+   "title": "\ud83d\udfe9 ACCUMULATE OQGN (was BUY)",
+   "body": "MSX \u00b7 OQ Gas Networks @ 0.21. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical HOLD, research BUY; . Regulated pipeline, stable cash flows, attractive dividend policy; moderate +14% YTD. Compliance: Highest-scoring Shariah Index constituent (2025 review)",
+   "category": "signal",
+   "guid": "1957f730fc8459f9206e958156453cfe313ba16a",
+   "pubDate": "Sat, 31 Oct 2026 10:56:11 +0000",
+   "anchor": "signals"
+  },
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE SPUS",
+   "body": "US Halal \u00b7 SP Funds S&P 500 Sharia ETF @ 59.89. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical ACCUMULATE, research BUY; uptrend (price & 50d above 200d). Low-cost core halal large-cap; ~2% below 52w high. DCA monthly. Compliance: S&P 500 Shariah index; Shariah board; 0.45% ER",
    "category": "signal",
    "guid": "d21d3f2bd97773a8af1cfaa20d49309ee129c56b",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟩 ACCUMULATE UMMA",
-   "body": "US Halal · Wahed Dow Jones Islamic World ETF @ 36.33. You don't hold it. ACTION: buy ••• (≈•••) from this month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). ~13% below 52w high; diversifies away from US mega-cap tech; 10-20% slice. Compliance: Islamic world ex-US exposure; 0.65% ER",
+   "title": "\ud83d\udfe9 ACCUMULATE UMMA",
+   "body": "US Halal \u00b7 Wahed Dow Jones Islamic World ETF @ 36.33. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). ~13% below 52w high; diversifies away from US mega-cap tech; 10-20% slice. Compliance: Islamic world ex-US exposure; 0.65% ER",
    "category": "signal",
    "guid": "87ec010b1162da69cc32a0a35293d021e8ab4247",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟩 ACCUMULATE NVDA",
-   "body": "US Halal · NVIDIA @ 216.5. You don't hold it. It's a candidate for next month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). Strong beat, ~11% below 52w high; small fractional buys on dips. Compliance: Musaffa HALAL (Oct 2026)",
+   "title": "\ud83d\udfe9 ACCUMULATE NVDA",
+   "body": "US Halal \u00b7 NVIDIA @ 216.5. You don't hold it. It's a candidate for next month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). Strong beat, ~11% below 52w high; small fractional buys on dips. Compliance: Musaffa HALAL (Oct 2026)",
    "category": "signal",
    "guid": "32287a36b49765ac122a05349fc1045331206cbb",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟩 ACCUMULATE AAPL",
-   "body": "US Halal · Apple @ 344.8. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 52w high, earnings ~Nov 2. Compliance: Musaffa halal (May 2026); purify small services income",
+   "title": "\ud83d\udfe9 ACCUMULATE AAPL",
+   "body": "US Halal \u00b7 Apple @ 344.8. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 52w high, earnings ~Nov 2. Compliance: Musaffa halal (May 2026); purify small services income",
    "category": "signal",
    "guid": "0fbeeb721cac0a010100cc2aae18e51e44f53f70",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟩 ACCUMULATE LLY",
-   "body": "US Halal · Eli Lilly @ 1,289. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 2026 high; pullbacks only. Compliance: Musaffa halal (May 2026)",
+   "title": "\ud83d\udfe9 ACCUMULATE LLY",
+   "body": "US Halal \u00b7 Eli Lilly @ 1,289. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 2026 high; pullbacks only. Compliance: Musaffa halal (May 2026)",
    "category": "signal",
    "guid": "d8429f704fbafd431a8c8c2cbd94190f23279814",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟩 ACCUMULATE BKNZ",
-   "body": "MSX · Bank Nizwa @ 0.14. You don't hold it. ACTION: buy ••• (≈•••) from this month's plan. Why: technical n/a, research ACCUMULATE; not enough price history - research view only. Core halal financial; up 38.5% YTD so buy in small monthly amounts. Compliance: Fully Islamic bank; MSX Shariah Index constituent",
+   "title": "\ud83d\udfe9 ACCUMULATE BKNZ",
+   "body": "MSX \u00b7 Bank Nizwa @ 0.14. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical n/a, research ACCUMULATE; not enough price history - research view only. Core halal financial; up 38.5% YTD so buy in small monthly amounts. Compliance: Fully Islamic bank; MSX Shariah Index constituent",
    "category": "signal",
    "guid": "cc5ea8e22334ea861ad9f3023b6da0f75aa93d4e",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "🟢 BUY OQGN",
-   "body": "MSX · OQ Gas Networks @ 0.22. You don't hold it. ACTION: buy ••• (≈•••) from this month's plan. Why: technical n/a, research BUY; not enough price history - research view only. Regulated pipeline, stable cash flows, attractive dividend policy; moderate +14% YTD. Compliance: Highest-scoring Shariah Index constituent (2025 review)",
+   "title": "\ud83d\udfe2 BUY OQGN",
+   "body": "MSX \u00b7 OQ Gas Networks @ 0.22. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical n/a, research BUY; not enough price history - research view only. Regulated pipeline, stable cash flows, attractive dividend policy; moderate +14% YTD. Compliance: Highest-scoring Shariah Index constituent (2025 review)",
    "category": "signal",
    "guid": "cbd4019e1898fe795d14e91ebdb8c786c10f33c1",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
    "anchor": "signals"
   },
   {
-   "title": "📅 October plan: deploy 100 OMR",
-   "body": "US Halal: SPUS ••• ≈ ••• (new), ACCUMULATE | US Halal: UMMA ••• ≈ ••• (new), ACCUMULATE | Commodities: — •••, No BUY/ACCUMULATE signal: keep as cash, re-check next month | MSX: OQGN ••• ≈ ••• (new), BUY | MSX: BKNZ ••• ≈ ••• (new), ACCUMULATE",
+   "title": "\ud83d\udcc5 October plan: deploy 100 OMR",
+   "body": "US Halal: SPUS \u2022\u2022\u2022 \u2248 \u2022\u2022\u2022 (new), ACCUMULATE | US Halal: UMMA \u2022\u2022\u2022 \u2248 \u2022\u2022\u2022 (new), ACCUMULATE | Commodities: \u2014 \u2022\u2022\u2022, No BUY/ACCUMULATE signal: keep as cash, re-check next month | MSX: OQGN \u2022\u2022\u2022 \u2248 \u2022\u2022\u2022 (new), BUY | MSX: BKNZ \u2022\u2022\u2022 \u2248 \u2022\u2022\u2022 (new), ACCUMULATE",
    "category": "plan",
    "guid": "d808bcd653a2525373dd0388f7c422b4e2ee6769",
    "pubDate": "Wed, 28 Oct 2026 18:17:06 +0000",
@@ -103,31 +111,25 @@
    {
     "domain": "us_halal",
     "symbol": "SPUS",
-    "omr": 25.0,
+    "omr": 29.5,
     "note": "ACCUMULATE"
    },
    {
     "domain": "us_halal",
     "symbol": "UMMA",
-    "omr": 25.0,
+    "omr": 29.5,
     "note": "ACCUMULATE"
    },
    {
     "domain": "commodities",
-    "symbol": "—",
-    "omr": 15.0,
+    "symbol": "\u2014",
+    "omr": 18.0,
     "note": "No BUY/ACCUMULATE signal: keep as cash, re-check next month"
    },
    {
     "domain": "msx",
     "symbol": "OQGN",
-    "omr": 13.33,
-    "note": "BUY"
-   },
-   {
-    "domain": "msx",
-    "symbol": "BKNZ",
-    "omr": 6.67,
+    "omr": 23.0,
     "note": "ACCUMULATE"
    }
   ]
