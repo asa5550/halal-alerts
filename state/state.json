@@ -31,6 +31,22 @@
  "alert_keys": {},
  "items": [
   {
+   "title": "\ud83d\udcc5 November plan: deploy 100 OMR",
+   "body": "US Halal: SPUS 29.50 OMR \u2248 1.313 units, ACCUMULATE | US Halal: UMMA 29.50 OMR \u2248 2.165 units, ACCUMULATE | Commodities: \u2014 18.00 OMR, No BUY/ACCUMULATE signal: keep as cash, re-check next month | MSX: OQGN 23.00 OMR \u2248 109 shares, ACCUMULATE",
+   "category": "plan",
+   "guid": "0319a69142a1566da15fcb2e6f43c42bd5a3d719",
+   "pubDate": "Sun, 01 Nov 2026 11:51:02 +0000",
+   "anchor": "plan"
+  },
+  {
+   "title": "\ud83d\uddde\ufe0f Weekly digest 2026-W44",
+   "body": "Portfolio no holdings. Holdings: none. BUY signals: none.",
+   "category": "digest",
+   "guid": "de87029a7213765568c12eaa84aa991e9256ceb8",
+   "pubDate": "Sun, 01 Nov 2026 11:51:02 +0000",
+   "anchor": ""
+  },
+  {
    "title": "\ud83d\udfe9 ACCUMULATE OQGN (was BUY)",
    "body": "MSX \u00b7 OQ Gas Networks @ 0.21. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical HOLD, research BUY; . Regulated pipeline, stable cash flows, attractive dividend policy; moderate +14% YTD. Compliance: Highest-scoring Shariah Index constituent (2025 review)",
    "category": "signal",
@@ -103,10 +119,10 @@
    "anchor": "plan"
   }
  ],
- "plan_month": "2026-10",
- "digest_week": "",
+ "plan_month": "2026-11",
+ "digest_week": "2026-W44",
  "plan": {
-  "month": "2026-10",
+  "month": "2026-11",
   "lines": [
    {
     "domain": "us_halal",
