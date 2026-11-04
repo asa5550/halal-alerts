@@ -4,7 +4,7 @@
   "HLAL": "HOLD",
   "UMMA": "ACCUMULATE",
   "SPTE": "HOLD",
-  "NVDA": "HOLD",
+  "NVDA": "ACCUMULATE",
   "AAPL": "HOLD",
   "AVGO": "REDUCE",
   "LLY": "HOLD",
@@ -30,6 +30,14 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE NVDA (was HOLD)",
+   "body": "US Halal \u00b7 NVIDIA @ 206.7. You don't hold it. It's a candidate for next month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). Strong beat, ~11% below 52w high; small fractional buys on dips. Compliance: Musaffa HALAL (Oct 2026)",
+   "category": "signal",
+   "guid": "f49b8950933c80062da7af93153d94f465598ab2",
+   "pubDate": "Wed, 04 Nov 2026 13:00:17 +0000",
+   "anchor": "signals"
+  },
   {
    "title": "\ud83d\udcc5 November plan: deploy 100 OMR",
    "body": "US Halal: SPUS 29.50 OMR \u2248 1.313 units, ACCUMULATE | US Halal: UMMA 29.50 OMR \u2248 2.165 units, ACCUMULATE | Commodities: \u2014 18.00 OMR, No BUY/ACCUMULATE signal: keep as cash, re-check next month | MSX: OQGN 23.00 OMR \u2248 109 shares, ACCUMULATE",
