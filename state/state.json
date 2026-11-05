@@ -4,8 +4,8 @@
   "HLAL": "HOLD",
   "UMMA": "ACCUMULATE",
   "SPTE": "HOLD",
-  "NVDA": "ACCUMULATE",
-  "AAPL": "HOLD",
+  "NVDA": "HOLD",
+  "AAPL": "ACCUMULATE",
   "AVGO": "REDUCE",
   "LLY": "HOLD",
   "TSLA": "AVOID",
@@ -30,6 +30,14 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE AAPL (was HOLD)",
+   "body": "US Halal \u00b7 Apple @ 349.5. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 52w high, earnings ~Nov 2. Compliance: Musaffa halal (May 2026); purify small services income",
+   "category": "signal",
+   "guid": "2828b932f32f819b8e3687de84e1a23d0f41bdc8",
+   "pubDate": "Thu, 05 Nov 2026 13:13:19 +0000",
+   "anchor": "signals"
+  },
   {
    "title": "\ud83d\udfe9 ACCUMULATE NVDA (was HOLD)",
    "body": "US Halal \u00b7 NVIDIA @ 206.7. You don't hold it. It's a candidate for next month's plan. Why: technical ACCUMULATE, research ACCUMULATE; uptrend (price & 50d above 200d). Strong beat, ~11% below 52w high; small fractional buys on dips. Compliance: Musaffa HALAL (Oct 2026)",
