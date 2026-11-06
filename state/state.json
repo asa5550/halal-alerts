@@ -2,12 +2,12 @@
  "last_signal": {
   "SPUS": "ACCUMULATE",
   "HLAL": "HOLD",
-  "UMMA": "ACCUMULATE",
+  "UMMA": "HOLD",
   "SPTE": "HOLD",
   "NVDA": "HOLD",
   "AAPL": "ACCUMULATE",
   "AVGO": "REDUCE",
-  "LLY": "HOLD",
+  "LLY": "ACCUMULATE",
   "TSLA": "AVOID",
   "GOOGL": "AVOID",
   "MSFT": "AVOID",
@@ -30,6 +30,14 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE LLY (was HOLD)",
+   "body": "US Halal \u00b7 Eli Lilly @ 1,365. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +11%. Near 2026 high; pullbacks only. Compliance: Musaffa halal (May 2026)",
+   "category": "signal",
+   "guid": "99719dda50a28f725c94dcd6585d5c3565cfbdc3",
+   "pubDate": "Fri, 06 Nov 2026 12:57:50 +0000",
+   "anchor": "signals"
+  },
   {
    "title": "\ud83d\udfe9 ACCUMULATE AAPL (was HOLD)",
    "body": "US Halal \u00b7 Apple @ 349.5. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +12%. Near 52w high, earnings ~Nov 2. Compliance: Musaffa halal (May 2026); purify small services income",
@@ -148,7 +156,7 @@
    },
    {
     "domain": "us_halal",
-    "symbol": "UMMA",
+    "symbol": "AAPL",
     "omr": 29.5,
     "note": "ACCUMULATE"
    },
