@@ -31,6 +31,14 @@
  "alert_keys": {},
  "items": [
   {
+   "title": "\ud83d\uddde\ufe0f Weekly digest 2026-W45",
+   "body": "Portfolio no holdings. Holdings: none. BUY signals: none.",
+   "category": "digest",
+   "guid": "8687d8e95d05f7eb24b71b1e7549cde975063155",
+   "pubDate": "Sun, 08 Nov 2026 11:56:51 +0000",
+   "anchor": ""
+  },
+  {
    "title": "\ud83d\udfe9 ACCUMULATE LLY (was HOLD)",
    "body": "US Halal \u00b7 Eli Lilly @ 1,365. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +11%. Near 2026 high; pullbacks only. Compliance: Musaffa halal (May 2026)",
    "category": "signal",
@@ -144,7 +152,7 @@
   }
  ],
  "plan_month": "2026-11",
- "digest_week": "2026-W44",
+ "digest_week": "2026-W45",
  "plan": {
   "month": "2026-11",
   "lines": [
