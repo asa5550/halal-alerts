@@ -34,6 +34,22 @@
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
    "category": "system",
+   "guid": "f3bc55974e59ef4bcdabd00f1ef62c3791699264",
+   "pubDate": "Sun, 15 Nov 2026 12:44:46 +0000",
+   "anchor": ""
+  },
+  {
+   "title": "\ud83d\uddde\ufe0f Weekly digest 2026-W46",
+   "body": "Portfolio no holdings. Holdings: none. BUY signals: none.",
+   "category": "digest",
+   "guid": "e3fbd7011aed8c977f32418d6564058b06d074b4",
+   "pubDate": "Sun, 15 Nov 2026 12:44:46 +0000",
+   "anchor": ""
+  },
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
    "guid": "37c414a5281e13f636673e9acdd75fae44bcc081",
    "pubDate": "Sat, 14 Nov 2026 12:12:18 +0000",
    "anchor": ""
@@ -168,7 +184,7 @@
   }
  ],
  "plan_month": "2026-11",
- "digest_week": "2026-W45",
+ "digest_week": "2026-W46",
  "plan": {
   "month": "2026-11",
   "lines": [
@@ -198,5 +214,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-14"
+ "msx_fail_day": "2026-11-15"
 }
