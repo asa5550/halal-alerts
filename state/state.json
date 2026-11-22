@@ -13,7 +13,7 @@
   "MSFT": "AVOID",
   "RMAU": "HOLD",
   "GLD": "REDUCE",
-  "9405": "REDUCE",
+  "9405": "HOLD",
   "AAAU": "REDUCE",
   "SLV": "AVOID",
   "DBC": "AVOID",
@@ -30,6 +30,22 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
+   "guid": "b8d2ab67a224dcee2807725443d5a6ebf27c4615",
+   "pubDate": "Sun, 22 Nov 2026 13:21:48 +0000",
+   "anchor": ""
+  },
+  {
+   "title": "\ud83d\uddde\ufe0f Weekly digest 2026-W47",
+   "body": "Portfolio no holdings. Holdings: none. BUY signals: none.",
+   "category": "digest",
+   "guid": "f3a7d31ca7f83b7a649a5dfd01012aa81e8cf53a",
+   "pubDate": "Sun, 22 Nov 2026 13:21:48 +0000",
+   "anchor": ""
+  },
   {
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
@@ -232,7 +248,7 @@
   }
  ],
  "plan_month": "2026-11",
- "digest_week": "2026-W46",
+ "digest_week": "2026-W47",
  "plan": {
   "month": "2026-11",
   "lines": [
@@ -262,5 +278,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-21"
+ "msx_fail_day": "2026-11-22"
 }
