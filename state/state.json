@@ -7,13 +7,13 @@
   "NVDA": "HOLD",
   "AAPL": "ACCUMULATE",
   "AVGO": "HOLD",
-  "LLY": "HOLD",
+  "LLY": "ACCUMULATE",
   "TSLA": "AVOID",
   "GOOGL": "AVOID",
   "MSFT": "AVOID",
-  "RMAU": "HOLD",
+  "RMAU": "REDUCE",
   "GLD": "REDUCE",
-  "9405": "HOLD",
+  "9405": "REDUCE",
   "AAAU": "REDUCE",
   "SLV": "AVOID",
   "DBC": "AVOID",
@@ -30,6 +30,22 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE LLY (was HOLD)",
+   "body": "US Halal \u00b7 Eli Lilly @ 1,376. You don't hold it. It's a candidate for next month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +16%. Near 2026 high; pullbacks only. Compliance: Musaffa halal (May 2026)",
+   "category": "signal",
+   "guid": "56e2fa3af53c69b735631670fde6f5e473d1f3ef",
+   "pubDate": "Mon, 23 Nov 2026 15:59:07 +0000",
+   "anchor": "signals"
+  },
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
+   "guid": "97945a8e1b5810bdf681bfc8c171e09c7da7af2e",
+   "pubDate": "Mon, 23 Nov 2026 15:59:07 +0000",
+   "anchor": ""
+  },
   {
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
@@ -278,5 +294,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-22"
+ "msx_fail_day": "2026-11-23"
 }
