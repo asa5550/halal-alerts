@@ -5,13 +5,13 @@
   "UMMA": "HOLD",
   "SPTE": "HOLD",
   "NVDA": "HOLD",
-  "AAPL": "ACCUMULATE",
+  "AAPL": "HOLD",
   "AVGO": "REDUCE",
   "LLY": "ACCUMULATE",
   "TSLA": "AVOID",
   "GOOGL": "AVOID",
   "MSFT": "AVOID",
-  "RMAU": "REDUCE",
+  "RMAU": "HOLD",
   "GLD": "REDUCE",
   "9405": "HOLD",
   "AAAU": "REDUCE",
@@ -30,6 +30,14 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
+   "guid": "051b82769f59a3ce0aef2511e66342586ca049d7",
+   "pubDate": "Wed, 25 Nov 2026 15:37:12 +0000",
+   "anchor": ""
+  },
   {
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
@@ -284,7 +292,7 @@
    },
    {
     "domain": "us_halal",
-    "symbol": "AAPL",
+    "symbol": "LLY",
     "omr": 29.5,
     "note": "ACCUMULATE"
    },
@@ -302,5 +310,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-24"
+ "msx_fail_day": "2026-11-25"
 }
