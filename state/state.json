@@ -5,13 +5,13 @@
   "UMMA": "HOLD",
   "SPTE": "HOLD",
   "NVDA": "HOLD",
-  "AAPL": "HOLD",
+  "AAPL": "ACCUMULATE",
   "AVGO": "REDUCE",
   "LLY": "ACCUMULATE",
   "TSLA": "AVOID",
   "GOOGL": "AVOID",
   "MSFT": "AVOID",
-  "RMAU": "HOLD",
+  "RMAU": "REDUCE",
   "GLD": "REDUCE",
   "9405": "HOLD",
   "AAAU": "REDUCE",
@@ -30,6 +30,22 @@
  },
  "alert_keys": {},
  "items": [
+  {
+   "title": "\ud83d\udfe9 ACCUMULATE AAPL (was HOLD)",
+   "body": "US Halal \u00b7 Apple @ 355.6. You don't hold it. ACTION: buy \u2022\u2022\u2022 (\u2248\u2022\u2022\u2022) from this month's plan. Why: technical BUY, research HOLD; uptrend (price & 50d above 200d); 3m momentum +11%. Near 52w high, earnings ~Nov 2. Compliance: Musaffa halal (May 2026); purify small services income",
+   "category": "signal",
+   "guid": "ac3b02e54b104ecba24ab30fcd65ede51321505f",
+   "pubDate": "Thu, 26 Nov 2026 15:18:04 +0000",
+   "anchor": "signals"
+  },
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
+   "guid": "c6f421f486699a5e2e02003c959ee12ee1478cee",
+   "pubDate": "Thu, 26 Nov 2026 15:18:04 +0000",
+   "anchor": ""
+  },
   {
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
@@ -292,7 +308,7 @@
    },
    {
     "domain": "us_halal",
-    "symbol": "LLY",
+    "symbol": "AAPL",
     "omr": 29.5,
     "note": "ACCUMULATE"
    },
@@ -310,5 +326,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-25"
+ "msx_fail_day": "2026-11-26"
 }
