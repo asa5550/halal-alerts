@@ -34,6 +34,14 @@
    "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
    "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
    "category": "system",
+   "guid": "3172372c6d1947e1c1ae05c2e9cfaec1936e92fe",
+   "pubDate": "Sat, 28 Nov 2026 14:13:16 +0000",
+   "anchor": ""
+  },
+  {
+   "title": "\ud83d\udee0\ufe0f MSX price fetch failed",
+   "body": "Couldn't read today's price for: BKNZ, OQGN, OQEP, ABRJ, OQBI, AACT, OTEL, BKMB, BKSB. Signals for these use the last stored price. Add today's close to manual_prices.csv in your private portfolio repo, or ask Claude to fix the parser.",
+   "category": "system",
    "guid": "f0472b98e281ba2eba654384195484e07055aafe",
    "pubDate": "Fri, 27 Nov 2026 15:06:00 +0000",
    "anchor": ""
@@ -334,5 +342,5 @@
    }
   ]
  },
- "msx_fail_day": "2026-11-27"
+ "msx_fail_day": "2026-11-28"
 }
